@@ -11,7 +11,7 @@ final class ImportPresenter extends Nette\Application\UI\Presenter
 {
     private $database;
     private $client;
-    
+
     public function __construct(
         Nette\Database\Explorer $database,
         Client                  $client
