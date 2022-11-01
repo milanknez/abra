@@ -1,46 +1,34 @@
-Nette Web Project
+Abra.local Project
 =================
 
-This is a simple, skeleton application using the [Nette](https://nette.org). This is meant to
-be used as a starting point for your new projects.
-
-[Nette](https://nette.org) is a popular tool for PHP web development.
-It is designed to be the most usable and friendliest as possible. It focuses
-on security and performance and is definitely one of the safest PHP frameworks.
-
-If you like Nette, **[please make a donation now](https://nette.org/donate)**. Thank you!
+stručná dokumentace a vypracování k api
 
 
-Requirements
+Zadání
 ------------
 
-- Web Project for Nette 3.1 requires PHP 7.2
+Vytvořit aplikaci v Nette, která
 
+- Na zavolání adresy /import načte data z API systému ABRA Flexi
+- Endpoint: https://nejlepsi.flexibee.eu/c/d450
+- Dotaz: GET /faktura-prijata.json?detail=custom:id,kod,datVystaveni,datSplat,sumCelkem
+- Basic Auth: user: d450, password: d450d450
+- Data si uloží do databáze (MS SQL nebo PostgreSQL)
+- Bude mít jednoduché REST API pro získání dat ze své databáze
+- Na výchozí adrese ( / ) bude mít stránku jednoduše nastylovanou pomocí SASS
+- Stránka bude obsahovat Kendo UI komponentu Grid, která bude data, získaná přes API, vypisovat.
 
-Installation
+API
 ------------
 
-The best way to install Web Project is using Composer. If you don't have Composer yet,
-download it following [the instructions](https://doc.nette.org/composer). Then use command:
+### Import přijatých faktur do aplikace
 
-	composer create-project nette/web-project path/to/install
-	cd path/to/install
+- URL: `http://abra.local/import/`
 
+### Výpis všech přijatých faktur
 
-Make directories `temp/` and `log/` writable.
+- URL: `http://abra.local/api/`
 
+### Výpis konkrétný faktury dle id
 
-Web Server Setup
-----------------
-
-The simplest way to get started is to start the built-in PHP server in the root directory of your project:
-
-	php -S localhost:8000 -t www
-
-Then visit `http://localhost:8000` in your browser to see the welcome page.
-
-For Apache or Nginx, setup a virtual host to point to the `www/` directory of the project and you
-should be ready to go.
-
-**It is CRITICAL that whole `app/`, `config/`, `log/` and `temp/` directories are not accessible directly
-via a web browser. See [security warning](https://nette.org/security-warning).**
+- URL: `http://abra.local/api/id/5`
