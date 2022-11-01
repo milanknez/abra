@@ -1,22 +1,25 @@
 Abra.local Project
 =================
 
-stručná dokumentace a vypracování k api
-
-
-Zadání
+Spuštění
 ------------
+* Run `composer install`
+* Run `yarn install`
+* Run `yarn encore dev`
+* Create database `abra` with table
 
-Vytvořit aplikaci v Nette, která
 
-- Na zavolání adresy /import načte data z API systému ABRA Flexi
-- Endpoint: https://nejlepsi.flexibee.eu/c/d450
-- Dotaz: GET /faktura-prijata.json?detail=custom:id,kod,datVystaveni,datSplat,sumCelkem
-- Basic Auth: user: d450, password: d450d450
-- Data si uloží do databáze (MS SQL nebo PostgreSQL)
-- Bude mít jednoduché REST API pro získání dat ze své databáze
-- Na výchozí adrese ( / ) bude mít stránku jednoduše nastylovanou pomocí SASS
-- Stránka bude obsahovat Kendo UI komponentu Grid, která bude data, získaná přes API, vypisovat.
+``` 
+CREATE TABLE IF NOT EXISTS `invoice` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+  `kod` varchar(32) COLLATE utf8_czech_ci NOT NULL,
+  `datVyst` varchar(128) COLLATE utf8_czech_ci NOT NULL,
+  `datSplat` varchar(128) COLLATE utf8_czech_ci NOT NULL,
+  `sumCelkem` float NOT NULL,
+  PRIMARY KEY (`id`)
+  ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+```
+
 
 API
 ------------
